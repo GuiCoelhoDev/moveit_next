@@ -1,10 +1,11 @@
+import styles from "./styles.module.scss";
 export const ExperienceBar = () => {
   return (
-    <header className="experience-bar">
+    <header className={styles.experienceBar}>
       <span>0 xp</span>
       <div>
         <div style={{ width: "50%" }}></div>
-        <span className="current-experience" style={{ left: "50%" }}>
+        <span className={styles.currentExperience} style={{ left: "50%" }}>
           600 XP
         </span>
       </div>

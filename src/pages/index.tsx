@@ -1,13 +1,23 @@
 import ExperienceBar from "../components/ExperienceBar";
 import Head from "next/head";
-import { title } from "process";
+import Profile from "../components/Profile";
+import styles from "../styles/home.module.scss";
+
 export default function Home() {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Head>
-        <title>Moveit</title>
+        <title>Moveit | Home</title>
       </Head>
+
       <ExperienceBar />
+
+      <section id="home">
+        <div>
+          <Profile />
+        </div>
+        <div></div>
+      </section>
     </div>
   );
 }
