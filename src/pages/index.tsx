@@ -2,6 +2,8 @@ import ExperienceBar from "../components/ExperienceBar";
 import Head from "next/head";
 import Profile from "../components/Profile";
 import styles from "../styles/home.module.scss";
+import CompletedChallenges from "../components/CompletedChallenges";
+import Countdown from "../components/Countdown";
 
 export default function Home() {
   return (
@@ -13,10 +15,12 @@ export default function Home() {
       <ExperienceBar />
 
       <section id="home">
-        <div>
+        <div id="leftSide">
           <Profile />
+          <CompletedChallenges />
+          <Countdown />
         </div>
-        <div></div>
+        <div id="rightSide"></div>
       </section>
     </div>
   );
