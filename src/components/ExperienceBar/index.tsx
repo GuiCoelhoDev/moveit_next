@@ -1,16 +1,14 @@
-import { Bar } from "./styles";
-
 export const ExperienceBar = () => {
   return (
-    <header>
-      <Bar>
-        <span className="left_xp">0 xp</span>
-        <div>
-          <div className="div_div" style={{ width: "50%" }}></div>
-          <span className="current_experience">600 XP</span>
-        </div>
-        <span className="right_xp">1250 xp</span>
-      </Bar>
+    <header className="experience-bar">
+      <span>0 xp</span>
+      <div>
+        <div style={{ width: "50%" }}></div>
+        <span className="current-experience" style={{ left: "50%" }}>
+          600 XP
+        </span>
+      </div>
+      <span>1250 xp</span>
     </header>
   );
 };
