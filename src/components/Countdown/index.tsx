@@ -1,6 +1,9 @@
 import styles from "./styles.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ChallengesContext } from "../../contexts/ChallengesContexts";
 export function Countdown() {
+  const { startNewChallenge } = useContext(ChallengesContext);
+
   // time é uma variável importante
   const [time, setTime] = useState(0.05 * 60); // 0.05 minutos em seg
   const [isActive, setIsActive] = useState(false);
@@ -43,6 +46,7 @@ export function Countdown() {
     if (isActive && time === 0) {
       setIsActive(false);
       setHasFinished(true);
+      startNewChallenge();
     }
   }, [isActive, time]);
 

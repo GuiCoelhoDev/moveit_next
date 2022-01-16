@@ -1,16 +1,46 @@
-import { Children, createContext, useState } from "react";
+import React, { Children, createContext, useState } from "react";
 
-export const ChallengesContext = createContext({});
+type ChallengesProviderProps = {
+  children: React.ReactNode;
+};
 
-export function ChallengesProvider({ children }) {
+type ChallengesContextData = {
+  level: number;
+  levelUp: () => void;
+  currentExperience: number;
+  challengesCompleted: number;
+  startNewChallenge: () => number;
+};
+
+export const ChallengesContext = createContext(
+  {} as ChallengesContextData
+);
+
+export function ChallengesProvider({
+  children,
+}: ChallengesProviderProps) {
   const [level, setLevel] = useState(4);
+  const [currentExperience, setCurrentExperience] = useState(0);
+  const [challengesCompleted, setChallengesCompleted] = useState(0);
 
   function levelUp() {
     setLevel(level + 1);
   }
 
+  function startNewChallenge() {
+    console.log("Novo desafio começou");
+  }
+
   return (
-    <ChallengesContext.Provider value={{ level, levelUp }}>
+    <ChallengesContext.Provider
+      value={{
+        level,
+        levelUp,
+        currentExperience,
+        challengesCompleted,
+        startNewChallenge,
+      }}
+    >
       {children}
     </ChallengesContext.Provider>
   );

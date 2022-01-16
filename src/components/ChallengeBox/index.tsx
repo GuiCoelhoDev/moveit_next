@@ -5,8 +5,7 @@ import styles from "./styles.module.scss";
 export default function ChallengeBox() {
   const [hasActiveChallenge, setHasActiveChallenge] = useState(true);
 
-  const contextData = useContext(ChallengesContext);
-  console.log(contextData);
+  const { startNewChallenge } = useContext(ChallengesContext);
 
   return (
     <div className={styles.container}>
