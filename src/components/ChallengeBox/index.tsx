@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ChallengesContext } from "../../contexts/ChallengesContexts";
 import styles from "./styles.module.scss";
 
 export default function ChallengeBox() {
-  const [hasActiveChallenge, setHasActiveChallenge] =
-    useState(true);
+  const [hasActiveChallenge, setHasActiveChallenge] = useState(true);
+
+  const contextData = useContext(ChallengesContext);
+  console.log(contextData);
 
   return (
     <div className={styles.container}>
@@ -15,8 +18,8 @@ export default function ChallengeBox() {
             <img src="icons/body.svg" alt="halter" />
             <h1>Exercite-se</h1>
             <p>
-              É agora diegão, bora lá. Caminhe por 3 minutos
-              e faça 10 push-ups
+              É agora diegão, bora lá. Caminhe por 3 minutos e faça 10
+              push-ups
             </p>
           </main>
 
@@ -39,9 +42,7 @@ export default function ChallengeBox() {
         </div>
       ) : (
         <div className={styles.hasNotActiveChallenge}>
-          <strong>
-            Finalize um ciclo para receber um desafio
-          </strong>
+          <strong>Finalize um ciclo para receber um desafio</strong>
           <p>
             <img src="icons/level-up.svg" alt="level-up" />
             Avance de level completando desafios.
