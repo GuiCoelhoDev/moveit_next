@@ -9,7 +9,7 @@ type ChallengesContextData = {
   levelUp: () => void;
   currentExperience: number;
   challengesCompleted: number;
-  startNewChallenge: () => number;
+  startNewChallenge: () => void;
 };
 
 export const ChallengesContext = createContext(
