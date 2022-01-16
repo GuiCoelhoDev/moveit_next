@@ -3,7 +3,8 @@ import { ChallengesContext } from "../../contexts/ChallengesContexts";
 import styles from "./styles.module.scss";
 
 export default function ChallengeBox() {
-  const { activeChallenge } = useContext(ChallengesContext);
+  const { activeChallenge, resetChallenge } =
+    useContext(ChallengesContext);
 
   console.log(activeChallenge);
 
@@ -14,10 +15,7 @@ export default function ChallengeBox() {
           <header>{`Ganhe ${activeChallenge.amount} XP`}</header>
 
           <main>
-            <img
-              src={`icons/${activeChallenge.type}.svg`}
-              alt="halter"
-            />
+            <img src={`icons/${activeChallenge.type}.svg`} alt="halter" />
             <h1>Exercite-se</h1>
             <p>{activeChallenge.description}</p>
           </main>
@@ -26,6 +24,7 @@ export default function ChallengeBox() {
             <button
               type="button"
               id="Falhei"
+              onClick={resetChallenge}
               className={styles.challengeFailedButton}
             >
               Falhei
