@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import challenges from "../../challenges.json";
+import LevelUpModal from "../components/LevelUpModal";
 
 type ChallengesProviderProps = {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ type ChallengesContextData = {
   resetChallenge: () => void;
   experienceToNextLevel: number;
   completeChallenge: () => void;
+  setIsLevelUpModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ChallengesContext = createContext(
@@ -48,7 +50,7 @@ export function ChallengesProvider({
     rest.challengesComplted ?? 0
   );
   const [activeChallenge, setActiveChallenge] = useState(null);
-
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
   useEffect(() => {
@@ -76,6 +78,7 @@ export function ChallengesProvider({
 
   function levelUp() {
     setLevel(level + 1);
+    setIsLevelUpModalOpen(true);
   }
 
   function challengesCompletedUp() {
@@ -119,9 +122,11 @@ export function ChallengesProvider({
         resetChallenge,
         experienceToNextLevel,
         completeChallenge,
+        setIsLevelUpModalOpen,
       }}
     >
       {children}
+      {isLevelUpModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );
 }
