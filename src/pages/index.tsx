@@ -9,7 +9,12 @@ import Countdown from "../components/Countdown";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
 
-export default function Home(props) {
+interface HomeProps {
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+}
+export default function Home(props: HomeProps) {
   console.log("Props:", props);
 
   return (
@@ -47,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      level: Number(level) || null,
+      level: Number(level) || null, // NOTE: não era pra reclamar essa linha caso eu deixasse type String? Por conta do HomeProps
       currentExperience: Number(currentExperience) || null,
       challengesCompleted: Number(challengesCompleted) || null,
     },
