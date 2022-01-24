@@ -40,6 +40,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     clearTimeout(timeout);
     setIsActive(false);
     setTime(0.05 * 60);
+    setHasFinished(false);
   }
   /* // O timer está demorando 1 segundo para parar. Quando eu clico em abandonar ciclo, o resetCountdown 
   é chamado. O reset countdown desativa o ative. Dai chama o useEffect que vai ver que o isActive ta falso apesar do
